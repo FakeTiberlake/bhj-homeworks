@@ -1,23 +1,8 @@
 const dead = document.getElementById('dead');
 const lost = document.getElementById('lost');
-
-var time = 1000;
-var place = 1;
-var replaceMole = () => {
-    let newPlace = Math.floor( Math.random() * 8 )+1;
-    if ( newPlace == place ) {
-        replaceMole();
-        return;
-    }
-    //console.log(newPlace);
-    document.getElementById(`hole${place}`).classList.remove('hole_has-mole');
-    document.getElementById(`hole${newPlace}`).classList.add('hole_has-mole');
-    place = newPlace;
-    setTimeout( function(){replaceMole();}, time );
-};
-
 let counterDead = 0;
 let counterLost = 0;
+
 getHole = index => document.getElementById(`hole${index}`);// выбор дыры по index
 for ( holeIndex = 1; holeIndex < 10; holeIndex++ ) {
     let hole = getHole(holeIndex);
@@ -42,4 +27,3 @@ for ( holeIndex = 1; holeIndex < 10; holeIndex++ ) {
     });
 
 }
-replaceMole();
